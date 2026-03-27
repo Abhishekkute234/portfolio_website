@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Outfit, Caveat } from "next/font/google";
 import "./globals.css";
-import CustomCursor from "./components/CustomCursor";
 import PageLoader from "./components/PageLoader";
 
 const playfair = Playfair_Display({
@@ -39,9 +38,8 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${outfit.variable} ${caveat.variable}`}
     >
-      <body style={{ cursor: 'none' }}>
+      <body>
         <PageLoader />
-        <CustomCursor />
         {children}
       </body>
     </html>

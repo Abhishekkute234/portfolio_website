@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const pathname = usePathname();
   const [time, setTime] = useState('');
+  const [user, setUser] = useState<{ email: string } | null>(null);
 
   useEffect(() => {
     const tick = () => {
@@ -22,12 +23,39 @@ export default function Header() {
     return () => clearInterval(id);
   }, []);
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data);
+        } else {
+          setUser(null);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchUser();
+  }, [pathname]);
+
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Works', href: '/works' },
     { label: 'Contact', href: '/contact' },
   ];
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      setUser(null);
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <header style={{
@@ -95,24 +123,62 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Right: CTA */}
-        <Link href="/contact" style={{
-          backgroundColor: '#DAEE47',
-          color: '#1A1A1A',
-          border: '1.5px solid #1A1A1A',
-          borderRadius: '999px',
-          padding: '9px 22px',
-          fontSize: '14px',
-          fontWeight: 500,
-          textDecoration: 'none',
-          transition: 'background-color 0.2s, transform 0.15s',
-          display: 'inline-block',
-        }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = '#c8dc35'; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DAEE47'; }}
-        >
-          Start a project
-        </Link>
+        {/* Right: CTA & Auth */}
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+          {user ? (
+             <>
+               <span style={{ fontSize: '13px', color: '#1A1A1A', fontWeight: 500 }}>{user.email}</span>
+               <button onClick={handleLogout} style={{
+                 backgroundColor: 'transparent',
+                 color: '#1A1A1A',
+                 border: '1.5px solid #1A1A1A',
+                 borderRadius: '999px',
+                 padding: '6px 16px',
+                 fontSize: '13px',
+                 fontWeight: 500,
+                 cursor: 'pointer',
+                 transition: 'background-color 0.2s',
+               }}
+                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(0,0,0,0.05)'; }}
+                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; }}
+               >
+                 Logout
+               </button>
+             </>
+          ) : (
+             <>
+               <Link href="/login" style={{
+                 fontSize: '14px',
+                 color: '#1A1A1A',
+                 textDecoration: 'none',
+                 fontWeight: 500,
+                 transition: 'opacity 0.2s'
+               }}
+                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
+                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+               >
+                 Login
+               </Link>
+               <Link href="/contact" style={{
+                 backgroundColor: '#DAEE47',
+                 color: '#1A1A1A',
+                 border: '1.5px solid #1A1A1A',
+                 borderRadius: '999px',
+                 padding: '9px 22px',
+                 fontSize: '14px',
+                 fontWeight: 500,
+                 textDecoration: 'none',
+                 transition: 'background-color 0.2s, transform 0.15s',
+                 display: 'inline-block',
+               }}
+                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = '#c8dc35'; }}
+                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DAEE47'; }}
+               >
+                 Start a project
+               </Link>
+             </>
+          )}
+        </div>
       </div>
     </header>
   );
