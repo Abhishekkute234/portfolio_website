@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #F9F6F0; /* Slightly warmer, lighter cream */
+  --yellow: #DDF03A; /* More vibrant yellow */
+  --dark: #121212;
+  --text: #191919;
+  --grid: rgba(0,0,0,0.04); /* Subtler grid */
+  --border: rgba(0,0,0,0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--cream);
+  --color-yellow: var(--yellow);
+  --color-dark: var(--dark);
+  --color-text: var(--text);
+  --font-serif: var(--font-instrument-serif);
+  --font-sans: var(--font-dm-sans);
+  --font-hand: var(--font-caveat);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cream);
+  color: var(--text);
+  font-family: var(--font-dm-sans), 'Outfit', sans-serif;
+  min-height: 100vh;
+  /* Subtle grid background */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 80px 80px; /* Larger, more elegant grid */
+}
+
+/* Typography */
+.font-serif {
+  font-family: var(--font-instrument-serif), 'Playfair Display', Georgia, serif;
+}
+
+.font-hand {
+  font-family: var(--font-caveat), 'Caveat', cursive;
+}
+
+/* Yellow highlight spans */
+.highlight {
+  background-color: var(--yellow);
+  padding: 0 4px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.3);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-inner {
+  animation: marquee 30s linear infinite; /* Slower, more premium feel */
+}
+
+/* Form styles */
+input, textarea, select {
+  background: #F0EBE1; /* Lighter background */
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 16px 20px;
+  width: 100%;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(0,0,0,0.3);
+  background: #fff;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(0,0,0,0.3);
 }
