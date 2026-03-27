@@ -11,19 +11,10 @@ export default function Footer() {
   ];
 
   return (
-    <footer style={{
-      backgroundColor: '#111111',
-      color: '#fff',
-      padding: '80px 32px 40px',
-    }}>
-      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <footer className="bg-[#111111] text-white py-12 md:py-20 px-6 md:px-8">
+      <div className="max-w-[1400px] mx-auto">
         {/* Top grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          gap: '48px',
-          marginBottom: '80px',
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 md:mb-20">
           {/* Brand */}
           <div>
             <span style={{
@@ -103,13 +94,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div style={{
-          borderTop: '1px solid rgba(255,255,255,0.1)',
-          paddingTop: '28px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
+        <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4 border-t border-white/10 pt-7 text-center sm:text-left">
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.35)' }}>
             © {year} Studio Think. All rights reserved.
           </p>

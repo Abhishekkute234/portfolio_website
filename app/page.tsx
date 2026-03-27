@@ -81,7 +81,7 @@ function HeroSection() {
   };
 
   return (
-    <section style={{ minHeight: 'calc(100vh - 60px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '80px 32px', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+    <section className="min-h-[calc(100vh-60px)] flex flex-col justify-center px-6 md:px-8 py-12 md:py-20 max-w-[1400px] mx-auto relative overflow-hidden md:overflow-visible">
       <div style={{ maxWidth: '900px' }}>
         <h1 style={{
           fontFamily: 'var(--font-instrument-serif), serif',
@@ -120,7 +120,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
-          style={{ marginTop: '56px', display: 'flex', gap: '20px', alignItems: 'center' }}
+          className="mt-10 md:mt-14 flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch sm:items-center"
         >
           <Link href="/works" style={{
             backgroundColor: '#1A1A1A',
@@ -130,6 +130,7 @@ function HeroSection() {
             fontSize: '15px',
             textDecoration: 'none',
             fontWeight: 400,
+            textAlign: 'center',
             transition: 'transform 0.2s',
           }}
           onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -163,6 +164,7 @@ function HeroSection() {
         initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
         animate={{ opacity: 1, scale: 1, rotate: 3 }}
         transition={{ duration: 0.8, delay: 1.6, type: "spring" }}
+        className="hidden md:block"
         style={{
           position: 'absolute',
           right: '12%',
@@ -191,6 +193,7 @@ function HeroSection() {
         initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
         animate={{ opacity: 1, scale: 1, rotate: -4 }}
         transition={{ duration: 0.8, delay: 1.8, type: "spring" }}
+        className="hidden md:block"
         style={{
           position: 'absolute',
           right: '6%',
@@ -241,7 +244,7 @@ function AboutSnippet() {
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
   
   return (
-    <section style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 32px 140px' }}>
+    <section className="max-w-[1400px] mx-auto px-6 md:px-8 pt-12 md:pt-16 pb-20 md:pb-32">
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -352,13 +355,13 @@ function LogoMarquee() {
 
 function SelectedWorks() {
   return (
-    <section style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 32px 160px' }}>
+    <section className="max-w-[1400px] mx-auto px-6 md:px-8 pb-20 md:pb-40">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '80px' }}
+        className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 mb-12 md:mb-20"
       >
         <div style={{ border: '1px solid rgba(0,0,0,0.1)', borderRadius: '6px', padding: '12px 24px', backgroundColor: '#fff' }}>
           <span style={{ fontFamily: 'var(--font-caveat), cursive', fontSize: '18px', color: 'rgba(0,0,0,0.4)', display: 'block', marginBottom: '4px' }}>proudly</span>
@@ -412,13 +415,13 @@ function SelectedWorks() {
 
 function Process() {
   return (
-    <section style={{ padding: '40px 32px 140px', maxWidth: '1400px', margin: '0 auto' }}>
+    <section className="max-w-[1400px] mx-auto px-6 md:px-8 py-10 md:py-20 mb-10 md:mb-16">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '100px' }}
+        className="flex flex-col md:flex-row justify-between items-start gap-8 mb-16 md:mb-24"
       >
         <h2 style={{
           fontFamily: 'var(--font-instrument-serif), serif',
@@ -430,14 +433,14 @@ function Process() {
           A process<br />
           <span style={{ fontStyle: 'italic' }}>rooted in craft</span>
         </h2>
-        <div style={{ alignSelf: 'flex-end', paddingBottom: '16px' }}>
+        <div className="md:self-end pb-0 md:pb-4">
           <span style={{ fontFamily: 'var(--font-caveat), cursive', fontSize: '18px', color: 'rgba(0,0,0,0.4)' }}>
             small steps → big results
           </span>
         </div>
       </motion.div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '48px' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
         {processSteps.map((step, i) => (
           <motion.div 
             key={step.num} 
@@ -472,20 +475,20 @@ function Process() {
 function Testimonials() {
   const [hovered, setHovered] = useState<number | null>(null);
   return (
-    <section style={{ padding: '0 32px 160px', maxWidth: '1400px', margin: '0 auto' }}>
+    <section className="max-w-[1400px] mx-auto px-6 md:px-8 pb-20 md:pb-40">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        style={{ textAlign: 'center', marginBottom: '80px' }}
+        className="text-center mb-16 md:mb-20"
       >
         <span style={{ fontFamily: 'var(--font-caveat), cursive', fontSize: '24px', color: 'rgba(0,0,0,0.4)', display: 'block', marginBottom: '12px' }}>kind words</span>
         <h2 style={{ fontFamily: 'var(--font-instrument-serif), serif', fontSize: 'clamp(44px, 5vw, 76px)', fontWeight: 400, letterSpacing: '-0.02em' }}>
           What clients say
         </h2>
       </motion.div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {testimonials.map((t, i) => (
           <motion.div
             key={i}
@@ -545,12 +548,7 @@ function CTASection() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1 }}
-      style={{
-        backgroundColor: '#111111',
-        color: '#fff',
-        padding: '160px 32px',
-        textAlign: 'center',
-      }}
+      className="bg-[#111111] text-white py-24 md:py-40 px-6 md:px-8 text-center"
     >
       <motion.span 
         initial={{ opacity: 0, y: 20 }}

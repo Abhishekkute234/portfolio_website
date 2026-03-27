@@ -62,14 +62,14 @@ export default function RegisterPage() {
       }}
     >
       {/* Dynamic Background Orbs */}
-      <div className="absolute top-[10%] left-[20%] w-[30vw] h-[30vw] rounded-full bg-[#DAEE47]/20 blur-[100px] animate-pulse" style={{ animationDuration: '4s' }} />
-      <div className="absolute bottom-[10%] right-[20%] w-[25vw] h-[25vw] rounded-full bg-[#E5D5C5]/60 blur-[80px] animate-pulse" style={{ animationDuration: '6s' }} />
+      <div className="absolute top-[10%] left-[20%] w-[80vw] md:w-[30vw] h-[80vw] md:h-[30vw] rounded-full bg-[#DAEE47]/20 blur-[80px] md:blur-[100px] animate-pulse" style={{ animationDuration: '4s' }} />
+      <div className="absolute bottom-[10%] right-[20%] w-[60vw] md:w-[25vw] h-[60vw] md:h-[25vw] rounded-full bg-[#E5D5C5]/60 blur-[60px] md:blur-[80px] animate-pulse" style={{ animationDuration: '6s' }} />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="w-full max-w-xl relative z-10 bg-transparent backdrop-blur-3xl p-12 sm:p-20 rounded-2xl border border-white/40 shadow-[0_20px_60px_rgb(0,0,0,0.05)]"
+        className="w-full max-w-xl relative z-10 bg-transparent backdrop-blur-3xl p-6 sm:p-12 md:p-20 rounded-2xl border border-white/40 shadow-[0_20px_60px_rgb(0,0,0,0.05)]"
       >
         <motion.div variants={itemVariants}>
           <Link href="/" className="inline-block mb-10">
@@ -80,10 +80,10 @@ export default function RegisterPage() {
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <h1 className="text-6xl mb-6 font-[family-name:var(--font-instrument-serif)] italic tracking-wide">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 font-[family-name:var(--font-instrument-serif)] italic tracking-wide">
             Join Studio
           </h1>
-          <p className="text-lg text-[#1A1A1A]/60 mb-14 font-light tracking-wide leading-relaxed">
+          <p className="text-base sm:text-lg text-[#1A1A1A]/60 mb-10 sm:mb-14 font-light tracking-wide leading-relaxed">
             Create an account to start your creative journey.
           </p>
         </motion.div>

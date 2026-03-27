@@ -68,15 +68,7 @@ export default function Header() {
         'linear-gradient(rgba(0,0,0,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.07) 1px, transparent 1px)',
       backgroundSize: '60px 60px',
     }}>
-      <div style={{
-        maxWidth: '1400px',
-        margin: '0 auto',
-        padding: '0 32px',
-        height: '60px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-8 h-[60px] flex items-center justify-between">
         {/* Left: Logo + Clock */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <Link href="/" style={{
@@ -101,7 +93,7 @@ export default function Header() {
         </div>
 
         {/* Center: Nav */}
-        <nav style={{ display: 'flex', gap: '36px', alignItems: 'center' }}>
+        <nav className="hidden md:flex gap-9 items-center">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -124,7 +116,7 @@ export default function Header() {
         </nav>
 
         {/* Right: CTA & Auth */}
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+        <div className="flex gap-4 md:gap-5 items-center">
           {user ? (
              <>
                <span style={{ fontSize: '13px', color: '#1A1A1A', fontWeight: 500 }}>{user.email}</span>
@@ -164,8 +156,8 @@ export default function Header() {
                  color: '#1A1A1A',
                  border: '1.5px solid #1A1A1A',
                  borderRadius: '999px',
-                 padding: '9px 22px',
-                 fontSize: '14px',
+                 padding: '9px 16px',
+                 fontSize: '13px',
                  fontWeight: 500,
                  textDecoration: 'none',
                  transition: 'background-color 0.2s, transform 0.15s',
