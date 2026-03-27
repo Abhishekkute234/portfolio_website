@@ -63,12 +63,12 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="min-h-screen flex flex-col items-center justify-center pt-24 pb-12 w-full">
         {/* Hero */}
-        <section style={{ padding: '120px 40px 80px', maxWidth: '1000px', margin: '0 auto', textAlign: 'center', minHeight: '50vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <section className="px-6 md:px-10 py-10 md:py-16 max-w-[1000px] w-full mx-auto text-center shrink-0">
           <h1 style={{
             fontFamily: 'var(--font-instrument-serif), serif',
-            fontSize: 'clamp(52px, 8vw, 120px)',
+            fontSize: 'clamp(48px, 8vw, 120px)',
             fontWeight: 400,
             lineHeight: 1.05,
             color: '#1A1A1A',
@@ -76,7 +76,7 @@ export default function ContactPage() {
           }}>
             {lines[0] && <span style={{ display: 'block' }}>{lines[0]}</span>}
             {lines[1] !== undefined && (
-              <span style={{ display: 'inline-block', backgroundColor: '#DDF03A', padding: '0 8px', marginTop: '4px' }}>{lines[1]}</span>
+              <span className="inline-block bg-[#DDF03A] px-2 md:px-3 mt-1 md:mt-2">{lines[1]}</span>
             )}
             {displayed.length < fullText.length && <motion.span animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} style={{ opacity: 0.4 }}>|</motion.span>}
           </h1>
@@ -84,25 +84,20 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            style={{ marginTop: '40px', fontSize: '18px', color: 'rgba(0,0,0,0.6)', lineHeight: 1.8, fontWeight: 300 }}
+            className="mt-8 md:mt-10 text-base md:text-lg text-black/60 leading-[1.8] font-light"
           >
             Fill out the form below and we&apos;ll get back to you within 1–2 business days.
           </motion.p>
         </section>
 
         {/* Form */}
-        <section style={{ maxWidth: '840px', margin: '0 auto', padding: '0 40px 180px' }}>
+        <section className="max-w-[840px] w-full mx-auto px-6 md:px-10 pb-10 md:pb-20 shrink-0">
           {submitted ? (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, type: 'spring' }}
-              style={{
-                textAlign: 'center',
-                padding: '100px 40px',
-                backgroundColor: '#DDF03A',
-                borderRadius: '24px',
-              }}
+              className="text-center p-12 sm:p-16 md:p-24 bg-[#DDF03A] rounded-[24px]"
             >
               <span style={{ fontSize: '56px', display: 'block', marginBottom: '24px', color: '#1A1A1A' }}>✦</span>
               <h3 style={{ fontFamily: 'var(--font-instrument-serif), serif', fontSize: '42px', marginBottom: '16px', fontWeight: 400, color: '#1A1A1A' }}>Message sent!</h3>
@@ -114,27 +109,27 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.4 }}
               onSubmit={handleSubmit} 
-              style={{ display: 'flex', flexDirection: 'column', gap: '32px', backgroundColor: '#fff', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '24px', padding: '56px', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}
+              className="flex flex-col gap-10 md:gap-14 bg-white border border-black/[0.08] rounded-[24px] p-6 sm:p-10 md:p-14 shadow-[0_20px_40px_rgba(0,0,0,0.03)]"
             >
               {error && (
                 <div style={{ padding: '16px', backgroundColor: '#FFEBEB', color: '#D8000C', borderRadius: '8px', fontSize: '14px' }}>
                   {error}
                 </div>
               )}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12">
                 <div>
-                  <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '10px', color: '#1A1A1A', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Name</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Jane Smith" required disabled={isSubmitting} />
+                  <label className="block text-[13px] sm:text-sm font-medium mb-4 sm:mb-5 text-[#1A1A1A] tracking-[0.04em] uppercase">Name</label>
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Jane Smith" required disabled={isSubmitting} className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/20 py-3 focus:outline-none focus:border-[#1A1A1A] transition-colors text-base md:text-lg" />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '10px', color: '#1A1A1A', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Email</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="jane@example.com" required disabled={isSubmitting} />
+                  <label className="block text-[13px] sm:text-sm font-medium mb-4 sm:mb-5 text-[#1A1A1A] tracking-[0.04em] uppercase">Email</label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="jane@example.com" required disabled={isSubmitting} className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/20 py-3 focus:outline-none focus:border-[#1A1A1A] transition-colors text-base md:text-lg" />
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '10px', color: '#1A1A1A', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Project Type</label>
-                  <select name="projectType" value={formData.projectType} onChange={handleChange} disabled={isSubmitting}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12">
+                <div className="relative">
+                  <label className="block text-[13px] sm:text-sm font-medium mb-4 sm:mb-5 text-[#1A1A1A] tracking-[0.04em] uppercase">Project Type</label>
+                  <select name="projectType" value={formData.projectType} onChange={handleChange} disabled={isSubmitting} className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/20 py-3 focus:outline-none focus:border-[#1A1A1A] transition-colors text-base md:text-lg appearance-none cursor-pointer">
                     <option value="">Select...</option>
                     <option value="Brand Identity">Brand Identity</option>
                     <option value="Digital Design">Digital Design</option>
@@ -142,9 +137,9 @@ export default function ContactPage() {
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '10px', color: '#1A1A1A', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Budget</label>
-                  <select name="budget" value={formData.budget} onChange={handleChange} disabled={isSubmitting}>
+                <div className="relative">
+                  <label className="block text-[13px] sm:text-sm font-medium mb-4 sm:mb-5 text-[#1A1A1A] tracking-[0.04em] uppercase">Budget</label>
+                  <select name="budget" value={formData.budget} onChange={handleChange} disabled={isSubmitting} className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/20 py-3 focus:outline-none focus:border-[#1A1A1A] transition-colors text-base md:text-lg appearance-none cursor-pointer">
                     <option value="">Select...</option>
                     <option value="Under $5,000">Under $5,000</option>
                     <option value="$5,000 – $15,000">$5,000 – $15,000</option>
@@ -154,8 +149,8 @@ export default function ContactPage() {
                 </div>
               </div>
               <div>
-                <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '10px', color: '#1A1A1A', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Project Description</label>
-                <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Tell us about your project..." rows={6} style={{ resize: 'vertical' }} disabled={isSubmitting} />
+                <label className="block text-[13px] sm:text-sm font-medium mb-4 sm:mb-5 text-[#1A1A1A] tracking-[0.04em] uppercase">Project Description</label>
+                <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Tell us about your project..." rows={5} disabled={isSubmitting} className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/20 py-3 focus:outline-none focus:border-[#1A1A1A] transition-colors text-base md:text-lg resize-y" />
               </div>
               <motion.button
                 type="submit"
@@ -165,8 +160,7 @@ export default function ContactPage() {
                   color: '#1A1A1A',
                   border: '1px solid #DDF03A',
                   borderRadius: '999px',
-                  padding: '20px 48px',
-                  fontSize: '16px',
+                  fontSize: '15px',
                   fontWeight: 500,
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
                   opacity: isSubmitting ? 0.7 : 1,
@@ -174,6 +168,7 @@ export default function ContactPage() {
                   transition: 'background-color 0.3s, transform 0.3s',
                   fontFamily: 'var(--font-dm-sans), sans-serif',
                 }}
+                className="px-8 py-4 sm:px-[48px] sm:py-[20px] w-full sm:w-auto text-center mt-4"
                 whileHover={!isSubmitting ? { scale: 1.02, backgroundColor: '#ccde28' } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
               >

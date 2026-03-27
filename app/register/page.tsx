@@ -53,7 +53,7 @@ export default function RegisterPage() {
 
   return (
     <div 
-      className="min-h-screen flex items-center justify-center p-6 relative font-[family-name:var(--font-dm-sans)] overflow-hidden"
+      className="min-h-screen flex items-center justify-center p-4 sm:p-6 relative font-[family-name:var(--font-dm-sans)] overflow-hidden"
       style={{
         backgroundColor: '#F5F0E8',
         backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
@@ -69,7 +69,7 @@ export default function RegisterPage() {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="w-full max-w-xl relative z-10 bg-transparent backdrop-blur-3xl p-6 sm:p-12 md:p-20 rounded-2xl border border-white/40 shadow-[0_20px_60px_rgb(0,0,0,0.05)]"
+        className="w-full max-w-xl relative z-10 bg-transparent backdrop-blur-3xl p-6 sm:p-12 md:p-20 rounded-xl sm:rounded-2xl border border-white/40 shadow-[0_20px_60px_rgb(0,0,0,0.05)]"
       >
         <motion.div variants={itemVariants}>
           <Link href="/" className="inline-block mb-10">
@@ -80,15 +80,15 @@ export default function RegisterPage() {
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 font-[family-name:var(--font-instrument-serif)] italic tracking-wide">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl mb-3 sm:mb-6 font-[family-name:var(--font-instrument-serif)] italic tracking-wide">
             Join Studio
           </h1>
-          <p className="text-base sm:text-lg text-[#1A1A1A]/60 mb-10 sm:mb-14 font-light tracking-wide leading-relaxed">
+          <p className="text-sm sm:text-lg text-[#1A1A1A]/60 mb-8 sm:mb-14 font-light tracking-wide leading-relaxed">
             Create an account to start your creative journey.
           </p>
         </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-12">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-10 sm:gap-14">
           {error && (
             <motion.div 
               initial={{ opacity: 0, height: 0 }}
@@ -99,7 +99,7 @@ export default function RegisterPage() {
             </motion.div>
           )}
 
-          <motion.div variants={itemVariants} className="space-y-1 group relative">
+          <motion.div variants={itemVariants} className="space-y-3 sm:space-y-4 group relative">
             <label className="text-sm font-semibold tracking-widest uppercase text-[#1A1A1A]/50 group-focus-within:text-[#1A1A1A] transition-colors block">
               Email Address
             </label>
@@ -108,12 +108,12 @@ export default function RegisterPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/10 py-5 focus:outline-none focus:border-[#1A1A1A] transition-colors text-xl tracking-wide placeholder:text-[#1A1A1A]/20"
+              className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/10 py-3 sm:py-5 focus:outline-none focus:border-[#1A1A1A] transition-colors text-lg sm:text-xl tracking-wide placeholder:text-[#1A1A1A]/20"
               placeholder="hello@example.com"
             />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="space-y-2 group relative">
+          <motion.div variants={itemVariants} className="space-y-3 sm:space-y-4 group relative">
             <label className="text-sm font-semibold tracking-widest uppercase text-[#1A1A1A]/50 group-focus-within:text-[#1A1A1A] transition-colors block">
               Password
             </label>
@@ -122,17 +122,17 @@ export default function RegisterPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/10 py-4 focus:outline-none focus:border-[#1A1A1A] transition-colors text-xl placeholder:text-[#1A1A1A]/20"
+              className="w-full bg-transparent border-b-[1.5px] border-[#1A1A1A]/10 py-3 sm:py-4 focus:outline-none focus:border-[#1A1A1A] transition-colors text-lg sm:text-xl placeholder:text-[#1A1A1A]/20"
               placeholder="Create a strong password"
               minLength={6}
             />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="pt-10">
+          <motion.div variants={itemVariants} className="pt-4 sm:pt-6">
             <button
               type="submit"
               disabled={loading}
-              className="w-full group relative overflow-hidden text-[#1A1A1A] py-[24px] rounded-2xl text-lg tracking-wide transition-all duration-500 disabled:opacity-70 flex justify-center items-center gap-3 shadow-[0_8px_30px_rgba(218,238,71,0.3)]"
+              className="w-full group relative overflow-hidden text-[#1A1A1A] py-[16px] sm:py-[24px] rounded-xl sm:rounded-2xl text-base sm:text-lg tracking-wide transition-all duration-500 disabled:opacity-70 flex justify-center items-center gap-3 shadow-[0_8px_30px_rgba(218,238,71,0.3)]"
               style={{ 
                 background: 'linear-gradient(135deg, #DAEE47 0%, #c8dc35 100%)',
               }}
