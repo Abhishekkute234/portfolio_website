@@ -9,14 +9,12 @@ const ContactSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide an email.'],
   },
-  projectType: {
+  company: {
     type: String,
   },
-  budget: {
+  message: {
     type: String,
-  },
-  description: {
-    type: String,
+    required: [true, 'Please provide a message.'],
   },
   createdAt: {
     type: Date,

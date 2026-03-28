@@ -5,12 +5,12 @@ import Contact from '@/models/Contact';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, projectType, budget, description } = body;
+    const { name, email, company, message } = body;
 
     // Validate required fields
-    if (!name || !email) {
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Name and email are required fields.' },
+        { error: 'Name, email, and message are required fields.' },
         { status: 400 }
       );
     }
@@ -22,9 +22,8 @@ export async function POST(req: NextRequest) {
     const contact = await Contact.create({
       name,
       email,
-      projectType,
-      budget,
-      description,
+      company,
+      message,
     });
 
     return NextResponse.json(
